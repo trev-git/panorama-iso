@@ -12,8 +12,8 @@ sudo apt update && sudo apt upgrade -y
 cp -r PanoramaPlayer/ $HOME/
 rm -rf $HOME/PanoramaPlayer/.git
 
-sudo apt install libts0 # runtime dependency
-sudo apt install libvulkan-dev libxkbcommon-dev cmake build-essential # buildtime dependency
+sudo apt install libts0 -y # runtime dependency
+sudo apt install libvulkan-dev libxkbcommon-dev cmake build-essential -y # buildtime dependency
 sudo tar xvf files/usr-local-Qt6.8.3.tar.gz -C /usr/local/
 
 export LD_LIBRARY_PATH=/usr/local/Qt6.8.3/lib
@@ -55,5 +55,5 @@ sudo cp files/config.txt /boot/firmware/config.txt
 
 # Setup webserver
 
-sudo apt install apache2 php php-mbstring
+sudo apt install apache2 php php-mbstring -y
 sudo $PANORAMA_ROOT/setup-web.sh
