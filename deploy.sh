@@ -21,8 +21,10 @@ PANORAMA_ROOT=$HOME/PanoramaPlayer
 
 # Build PanoramaPlayer
 
+cd $PANORAMA_ROOT
 cmake -B $PANORAMA_ROOT/build -DCMAKE_BUILD_TYPE=Release
 cmake --build $PANORAMA_ROOT/build --parallel
+cd -
 
 # Copy the runtime files
 
@@ -31,18 +33,17 @@ cp files/panorama.service $HOME/.config/systemd/user/
 
 # Copy shell scripts
 sudo cp files/backlight /usr/local/bin/
-sudo files/panorama.sh /usr/local/bin/
+sudo cp files/panorama.sh /usr/local/bin/
 
 # Enable PanoramaPlayer at boot
-systemctl enable --now --user panorama.service
+systemctl enable --user panorama.service
 
 # Setup audio
 sudo apt install pipewire pipewire-pulse pipewire-jack pipewire-alsa wireplumber -y
-systemctl enable --now --user wireplumber.service
+systemctl enable --user wireplumber.service
 
 # Disable GUI
-sudo systemctl disable --now lightdm
-sudo systemctl mask lightdm
+sudo systemctl disable lightdm
 
 # Setup the serial port
 sudo systemctl mask serial-getty@ttyAMA0.service
@@ -50,3 +51,8 @@ sudo usermod -aG dialout admin
 
 # Raspi config
 sudo cp files/config.txt /boot/firmware/config.txt
+
+# Setup webserver
+
+sudo apt install apache2 php php-mbstring
+sudo $PANORAMA_ROOT/setup-web.sh

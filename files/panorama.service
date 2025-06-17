@@ -6,3 +6,6 @@ After=wireplumber.service
 [Service]
 ExecStart=/usr/local/bin/panoramaplay.sh
 Type=simple
+
+[Install]
+WantedBy=multi-user.target
