@@ -5,6 +5,8 @@ if [ $(id -u) -ne 1000 ]; then
     exit 1
 fi
 
+sudo apt update && sudo apt upgrade -y
+
 # Prerequisites for PanoramaPlayer
 
 cp -r PanoramaPlayer/ $HOME/
