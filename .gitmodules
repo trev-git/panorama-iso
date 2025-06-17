@@ -1,0 +1,3 @@
+[submodule "PanoramaPlayer"]
+	path = PanoramaPlayer
+	url = https://github.com/trev-git/PanoramaPlayer
