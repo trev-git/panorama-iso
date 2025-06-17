@@ -1,0 +1,8 @@
+[Unit]
+Description=Panorama Player
+OnFailure=reboot.service
+After=wireplumber.service
+
+[Service]
+ExecStart=/usr/local/bin/panoramaplay.sh
+Type=simple

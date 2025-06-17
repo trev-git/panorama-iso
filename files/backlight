@@ -1,0 +1,16 @@
+#!/bin/sh
+
+usage() {
+        echo "Usage: $0 (0|1)"
+        echo "  0 - turn on the backlight"
+        echo "  1 - turn off the backlight"
+        exit 1
+}
+
+[ $# -eq 1 ] || usage
+
+if [ $1 -eq 1 ]; then
+        pinctrl set 16 dl
+elif [ $1 -eq 0 ]; then
+        pinctrl set 16 dh
+fi
