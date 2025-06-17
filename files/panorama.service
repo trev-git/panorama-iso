@@ -1,11 +1,10 @@
 [Unit]
 Description=Panorama Player
 OnFailure=reboot.service
-After=wireplumber.service
 
 [Service]
 ExecStart=/usr/local/bin/panoramaplay.sh
 Type=simple
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sound.target

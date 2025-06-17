@@ -29,11 +29,12 @@ cd -
 # Copy the runtime files
 
 cp files/eglfs.json $HOME/
-cp files/panorama.service $HOME/.config/systemd/user/
+cp files/panorama.service /etc/systemd/system/
+cp files/reboot.service /etc/systemd/system/
 
 # Copy shell scripts
 sudo cp files/backlight /usr/local/bin/
-sudo cp files/panorama.sh /usr/local/bin/
+sudo cp files/panoramaplay.sh /usr/local/bin/
 
 # Enable PanoramaPlayer at boot
 systemctl enable --user panorama.service
